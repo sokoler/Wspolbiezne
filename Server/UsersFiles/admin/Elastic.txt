@@ -1,0 +1,2 @@
+//cd elasticsearch-7.6.2-windows-x86_64\elasticsearch-7.6.2
+//.\bin\elasticsearch.bat -Ecluster.name=todos_application -Enode.name=node_1

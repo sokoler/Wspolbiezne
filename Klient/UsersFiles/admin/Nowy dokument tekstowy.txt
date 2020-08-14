@@ -1,0 +1,21 @@
+for i = 1 : N
+  d = 0.5 * (sqrt(5)-1) * (xu -xl);
+  x1 = xl + d;
+  x2 = xu - d;
+
+    if f(x1) > f(x2)
+      x1 = x2;
+    else 
+      xu = x1;
+    endif
+    
+  xx(j) = x1;  
+  jj = j - 1;
+  Err = abs(xx(j) - xx(j-1));  
+  
+    if Err < err, break; 
+    endif
+end
+
+FF = f(x1);
+disp(['Optymalny x: ' num2str(x1) ' , Optymalna wartość : ' num2str(FF) ' , iteracje: ' num2str(jj)])
