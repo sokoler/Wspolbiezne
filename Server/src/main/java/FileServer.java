@@ -5,12 +5,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
+import java.util.concurrent.Semaphore;
 
 public class FileServer extends Thread {
 
     private Thread t;
     private String threadName;
-
+    static Semaphore semaphore = new Semaphore(4);
     static int id = 1;
 
     private ServerSocket ss;
@@ -22,6 +23,7 @@ public class FileServer extends Thread {
 
     public FileServer(int port, String name) {
         try {
+
             threadName = name;
             ss = new ServerSocket(port);
             clientSock = ss.accept();
@@ -31,29 +33,48 @@ public class FileServer extends Thread {
         }
     }
 
-    public void start () {
-        System.out.println("Starting " +  threadName );
+    public void start() {
+        System.out.println("Starting " + threadName);
         if (t == null) {
-            t = new Thread (this, threadName);
-            t.start ();
+            t = new Thread(this, threadName);
+            t.start();
         }
     }
 
     public void run() {
         while (true) {
 
-            System.out.println("Running " +  threadName );
+            System.out.println("Running " + threadName);
 
             try {
-                saveFile(clientSock,pathToFiles + login +"\\");
-            } catch (IOException e) {
+
+                semaphore.acquire();
+                System.out.println(threadName + " : got the permit!");
+                System.out.println("available Semaphore permits : "
+                        + semaphore.availablePermits());
+
+                try {
+
+                    saveFile(clientSock, pathToFiles + login + "\\");
+
+                } finally {
+
+                    // calling release() after a successful acquire()
+                    System.out.println(threadName + " : releasing lock...");
+                    semaphore.release();
+                    System.out.println(threadName + " : available Semaphore permits now: "
+                            + semaphore.availablePermits());
+
+                }
+
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
     private void saveFile(Socket clientSock, String path) throws IOException {
-     //   dis = new DataInputStream(clientSock.getInputStream());
+        //   dis = new DataInputStream(clientSock.getInputStream());
         byte[] buffer = new byte[4096]; //4096 16384
 
         String fileName = dis.readUTF();
@@ -72,8 +93,8 @@ public class FileServer extends Thread {
             fos.write(buffer, 0, read);
         }
 
-      //  fos.close();
-      //  dis.close();
+        //  fos.close();
+        //  dis.close();
     }
 
     public void readLogin(Socket clientSock) throws IOException {
@@ -103,8 +124,8 @@ public class FileServer extends Thread {
 
     public static void main(String[] args) throws SQLException {
 
-            FileServer fs = new FileServer(6666, "Thread Name - " + id++);
-            fs.start();
+        FileServer fs = new FileServer(6666, "Thread Name - " + id++);
+        fs.start();
 
     }
 

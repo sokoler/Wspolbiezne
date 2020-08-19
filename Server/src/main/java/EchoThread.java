@@ -11,15 +11,15 @@ public class EchoThread extends Thread {
 
     private String login;
     private static String pathToFiles = "D:\\Programy\\Wspolbieżne\\Server\\UsersFiles\\";
-    private DataInputStream dis;
-    private DataOutputStream dos;
-    Semaphore sem;
+    public DataInputStream dis;
+    public DataOutputStream dos;
+    static Semaphore semaphore = new Semaphore(4);
     String threadName;
+    private static int liczba;
 
-    public EchoThread(Socket clientSocket, Semaphore sem, String threadName) {
+    public EchoThread(Socket clientSocket, String threadName) {
 
         this.threadName = threadName;
-        this.sem = sem;
         this.socket = clientSocket;
     }
 
@@ -31,7 +31,7 @@ public class EchoThread extends Thread {
         try {
             input = socket.getInputStream();
             output = socket.getOutputStream();
-         //   bufferedReader = new BufferedReader(new InputStreamReader(input));
+            //   bufferedReader = new BufferedReader(new InputStreamReader(input));
             dis = new DataInputStream(input);
             dos = new DataOutputStream(output);
 
@@ -44,62 +44,77 @@ public class EchoThread extends Thread {
         }
         String line;
 
-        if(DatabaseHandler.checkUser) {
+        if (DatabaseHandler.checkUser) {
 
-            while (true) {
+          //  while (true) {
+
+                MyRunnable t1 = new MyRunnable("Nazwa ELo" + liczba ++ );
+
+                Thread thread = new Thread(t1);
+                thread.start();
+
+         //   }
+        }
+    }
+
+    public class MyRunnable implements Runnable {
+
+        String name;
+
+        public MyRunnable(String name) {
+            this.name = name;
+        }
+
+        private void saveFile(String path) throws IOException {
+
+            byte[] buffer = new byte[4096]; //4096 16384
+
+            String fileName = dis.readUTF();
+            int fileSize = (int) dis.readLong();
+
+            int read = 0;
+            int totalRead = 0;
+
+            FileOutputStream fos = new FileOutputStream(path + fileName);
+            System.out.println("Nazwa pliku " + fileName);
+
+            while ((read = dis.read(buffer, 0, Math.min(buffer.length, fileSize))) > 0) {
+                totalRead += read;
+                fileSize -= read;
+                System.out.println("Przeczytano " + totalRead + " bajtów.");
+                fos.write(buffer, 0, read);
+            }
+
+        }
+
+        public void run() {
+            try {
+
+                semaphore.acquire();
+                System.out.println(name + " : got the permit!");
+                System.out.println("available Semaphore permits : "
+                        + semaphore.availablePermits());
+
                 try {
-
-                    // Will get the permit to access shared resource
-                    System.out.println(threadName + " waiting for a permit.");
-
-                    // acquiring the lock
-                    sem.acquire();
-
-                    System.out.println(threadName + " gets a permit.");
 
                     saveFile(pathToFiles + login + "\\");
 
-//                line = bufferedReader.readLine();
-//                if ((line == null) || line.equalsIgnoreCase("QUIT")) {
-//                    socket.close();
-//                    return;
-//                } else {
-//                    dos.writeBytes(line + "\n\r");
-//                    dos.flush();
-//                }
+                } finally {
 
-                } catch (IOException | InterruptedException e) {
-                    e.printStackTrace();
-                    // Release the permit.
-                    System.out.println(threadName + " releases the permit.");
-                    sem.release();
-                    return;
+                    // calling release() after a successful acquire()
+                    System.out.println(name + " : releasing lock...");
+                    semaphore.release();
+                    System.out.println(name + " : available Semaphore permits now: "
+                            + semaphore.availablePermits());
+
                 }
+
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    private void saveFile(String path) throws IOException {
-
-        byte[] buffer = new byte[4096]; //4096 16384
-
-        String fileName = dis.readUTF();
-        int fileSize = (int) dis.readLong();
-
-        int read = 0;
-        int totalRead = 0;
-
-        FileOutputStream fos = new FileOutputStream(path + fileName);
-        System.out.println("Nazwa pliku " + fileName);
-
-        while ((read = dis.read(buffer, 0, Math.min(buffer.length, fileSize))) > 0) {
-            totalRead += read;
-            fileSize -= read;
-            System.out.println("Przeczytano " + totalRead + " bajtów.");
-            fos.write(buffer, 0, read);
-        }
-
-    }
 
     public void readLogin() throws IOException {
 

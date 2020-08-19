@@ -8,9 +8,7 @@ public class Main {
 
     static final int PORT = 6666;
     static Connection connection;
-    private static Semaphore sem;
     private static int liczba;
-  //  Semaphore sem;
 
     public static void main(String[] args) {
         ServerSocket serverSocket = null;
@@ -34,7 +32,7 @@ public class Main {
                 System.out.println("I/O error: " + e);
             }
             // new thread for a client
-            new EchoThread(socket,sem,"Wątek Klienta "+ liczba++ ).start();
+            new EchoThread(socket,"Wątek Klienta "+ liczba++ ).start();
         }
     }
 }

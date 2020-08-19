@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e30457e6-10f4-49d8-ad01-051e8b913b63" name="Default Changelist" comment="" />
+    <list default="true" id="e30457e6-10f4-49d8-ad01-051e8b913b63" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Server/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersFiles/admin/fminbnd_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UsersFiles/admin/fun_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/main/java/EchoThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/main/java/EchoThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/main/java/FileServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/main/java/FileServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/main/java/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +24,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1bdXQ9BOLgTubC73wli47D54V2J" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,6 +36,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -78,7 +93,9 @@
       <workItem from="1592648317213" duration="2148000" />
       <workItem from="1593012733108" duration="3498000" />
       <workItem from="1593507414008" duration="3687000" />
-      <workItem from="1597408084179" duration="590000" />
+      <workItem from="1597408084179" duration="1251000" />
+      <workItem from="1597749043168" duration="610000" />
+      <workItem from="1597833807761" duration="7012000" />
     </task>
     <servers />
   </component>
@@ -110,22 +127,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592497376733" />
-    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1593030697474">
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1597861180568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593030697474" />
-    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1593030697474">
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597861180568" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1597861180568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593030697474" />
-    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1593030697474">
+    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597861180568" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1597861180568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593030697474" />
-    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1593030697474">
+    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597861180568" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1597861180568">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593030697474" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597861180568" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1590160515024">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -146,10 +163,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592497530531" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1590227501036">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1597749441172">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590227501036" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597749441172" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
